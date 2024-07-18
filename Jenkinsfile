@@ -9,15 +9,30 @@ pipeline {
         echo '********* Cleaning Workspace Stage Finished **********'
       }
     }
+    stage('Setup Python Environment') {
+            steps {
+                // Install virtualenv if not already installed
+                sh 'pip install --user virtualenv'
+
+                // Create a virtual environment
+                sh 'python -m virtualenv venv'
+
+                // Activate the virtual environment and install PyInstaller
+                sh '''
+                . venv/bin/activate
+                pip install pyinstaller
+                '''
+            }
+        }
     
     stage('Build Stage') {
       steps {
         echo '********* Build Stage Started **********'
         sh '. venv/bin/activate'
-        sh '''
-            pip install --upgrade pip
-            pip install pyinstaller
-          '''
+        //sh '''
+          //  pip install --upgrade pip
+            //pip install pyinstaller
+          //'''
         sh 'pip install -r requirements.txt'
         sh 'pyinstaller --onefile app.py'
         echo '********* Build Stage Finished **********'
