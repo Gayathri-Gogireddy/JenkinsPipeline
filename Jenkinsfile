@@ -45,7 +45,7 @@ pipeline {
     stage('Testing Stage') {
       steps {
         echo '********* Test Stage Started **********'
-        sh 'python test.py'
+        sh 'python3 test.py'
         echo '********* Test Stage Finished **********'
       }   
     }
