@@ -13,6 +13,7 @@ pipeline {
     stage('Build Stage') {
       steps {
         echo '********* Build Stage Started **********'
+        sh '. venv/bin/activate'
         sh '''
             pip install --upgrade pip
             pip install pyinstaller
