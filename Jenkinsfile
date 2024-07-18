@@ -26,6 +26,12 @@ pipeline {
                 . venv/bin/activate
                 pip install pyinstaller
                 '''
+               // Download JFrog CLI
+                sh 'curl -fL https://getcli.jfrog.io | sh'
+
+                // Ensure JFrog CLI is executable and in PATH
+                sh 'sudo chmod +x jfrog'
+                sh ' sudo mv jfrog /usr/local/bin/'
             }
         }
     
