@@ -11,11 +11,15 @@ pipeline {
     }
     stage('Setup Python Environment') {
             steps {
-                // Install virtualenv if not already installed
-                sh 'pip install --user virtualenv'
+               sh '''
+                  sudo apt-get update
+                  sudo apt-get install python3 python3-pip
+                  '''
+                   // Add Python to PATH if necessary
+                sh 'export PATH=$PATH:/path/to/python && pip3 install --user virtualenv'
 
                 // Create a virtual environment
-                sh 'python -m virtualenv venv'
+                sh 'export PATH=$PATH:/path/to/python && python3 -m virtualenv venv'
 
                 // Activate the virtual environment and install PyInstaller
                 sh '''
