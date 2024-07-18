@@ -38,7 +38,6 @@ pipeline {
             //pip install pyinstaller
           //'''
         sh 'pip install -r requirements.txt'
-        sh '.venv/bin/activate'
         sh 'python3 -m PyInstaller --onefile app.py'
         echo '********* Build Stage Finished **********'
         }
