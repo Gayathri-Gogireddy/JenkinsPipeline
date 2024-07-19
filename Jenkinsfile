@@ -55,7 +55,7 @@ pipeline {
         echo '********* Test Stage Finished **********'
       }   
     }
-    stage('Configure Artifactory'){
+   /* stage('Configure Artifactory'){
       steps{
         script {
           
@@ -75,7 +75,7 @@ pipeline {
             steps {
                 input "Does the staging environment look ok?"
             }
-     }
+     }*/
 stage('Deployment Stage'){
             steps{
                 input "Do you want to Deploy the application?"
@@ -88,7 +88,7 @@ stage('Deployment Stage'){
             }
     }
   }
-  post {
+  /*post {
         always {
             echo 'We came to an end!'
             archiveArtifacts artifacts: 'dist/*.exe', fingerprint: true
@@ -97,7 +97,7 @@ stage('Deployment Stage'){
             if(currentBuild.currentResult=='SUCCESS')
             {
               echo '********* Uploading to Artifactory is Started **********'
-              /*bat 'jfrog rt u "dist/*.exe" generic-local'*/
+              /*bat 'jfrog rt u "dist/*.exe" generic-local'
               sh 'Powershell.exe -executionpolicy remotesigned -File build_script.ps1'
               echo '********* Uploading Finished **********'
             }
@@ -119,5 +119,5 @@ stage('Deployment Stage'){
         changed {
             echo 'Hey look at this, Pipeline state is changed.'
         }
-    }
+    }*/
 }
