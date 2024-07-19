@@ -82,7 +82,7 @@ stage('Deployment Stage'){
                 echo '********* Deploy Stage Started **********'
                 timeout(time : 1, unit : 'MINUTES')
                 {
-                sh 'python app.py'
+                sh 'python3 app.py'
                 }
                 echo '********* Deploy Stage Finished **********'
             }
