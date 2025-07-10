@@ -1,2 +1,3 @@
-xmlrunner
+pytest
+pytest-xml
 Flask
